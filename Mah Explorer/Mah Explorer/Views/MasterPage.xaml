@@ -16,14 +16,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Canvas.ZIndex="3" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Height="7"/>
-        <Grid Grid.Row="1" Canvas.ZIndex="2">
+        <Grid Grid.Row="0" Canvas.ZIndex="4" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Height="7"/>
+        <Grid Grid.Row="1" Canvas.ZIndex="3">
             <Custom:DropShadowPanel OffsetY="-2" Margin="0,-1,0,0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" BlurRadius="10">
                 <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Orientation="Vertical">
-                    <Custom:TabView x:Name="Ribbon" TabWidthBehavior="Actual" Background="Transparent">
-                        
-                        <Custom:TabViewItem  IsSelected="True" BorderThickness="0" Header="Home">
+                    <Custom:TabView x:Name="Ribbon" TabWidthBehavior="Actual" Background="Transparent" Template="{StaticResource TabViewTemplate1}">
+
+                        <Custom:TabViewItem Template="{StaticResource TabViewItemFluentTemplate}" IsSelected="True" BorderThickness="0" Header="Home">
                             <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                
                                 <CommandBar.Content>
                                     <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
                                         <AppBarButton Name="CutButton" IsEnabled="False" Label="Cut" Icon="Cut"/>
@@ -49,7 +50,7 @@
                                 </CommandBar.Content>
                             </CommandBar>
                         </Custom:TabViewItem>
-                        <Custom:TabViewItem  BorderThickness="0"  Header="Share">
+                        <Custom:TabViewItem Template="{StaticResource TabViewItemFluentTemplate}" BorderThickness="0"  Header="Share">
                             <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
                                 <CommandBar.Content>
                                     <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
@@ -58,7 +59,7 @@
                                 </CommandBar.Content>
                             </CommandBar>
                         </Custom:TabViewItem>
-                        <Custom:TabViewItem  BorderThickness="0" Header="Layout">
+                        <Custom:TabViewItem Template="{StaticResource TabViewItemFluentTemplate}" BorderThickness="0" Header="Layout">
                             <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
                                 <CommandBar.Content>
                                     <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
@@ -118,16 +119,58 @@
                                 </AppBarButton.KeyboardAccelerators>
                             </AppBarButton>
                         </StackPanel>
-                        <TextBox Grid.Column="1" BorderThickness="1" x:Name="VisiblePath" Text="Path" FontFamily="Segoe UI" FontWeight="SemiBold" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="2,5" PlaceholderText="Navigate to a path...">
+                        <Grid CornerRadius="15" Grid.Column="1" Opacity="1" BorderBrush="Gray" BorderThickness="1"  Margin="2,5" >
+                            <TextBox Style="{StaticResource TextBoxStyle1}" BorderThickness="0" Grid.Column="1" x:Name="VisiblePath" 
+                        Text="Path" FontFamily="Segoe UI" Padding="10,5" FontWeight="SemiBold" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                        PlaceholderText="Navigate to a path..." />
+                        </Grid>
 
-                        </TextBox>
 
-                        <AutoSuggestBox PlaceholderText="Search" QueryIcon="Find" Width="275" Margin="5" Grid.Column="2"/>
+                        <Grid CornerRadius="15" Grid.Column="2" Opacity="1" BorderBrush="Gray" BorderThickness="1"  Margin="2,5" >
+                            <AutoSuggestBox Style="{StaticResource AutoSuggestBoxStyle2}" PlaceholderText="Search" BorderThickness="0" BorderBrush="Transparent" QueryIcon="Find" Width="275" />
+                        </Grid>
+                        
 
                     </Grid>
                 </StackPanel>
             </Custom:DropShadowPanel>
 
         </Grid>
+        <SplitView DisplayMode="Inline" OpenPaneLength="225" IsPaneOpen="True" HorizontalAlignment="Stretch" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Stretch" PaneBackground="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}" >
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <ScrollViewer>
+                            <Grid>
+                                <StackPanel>
+                                    <TextBlock Margin="10" Text="Locations" FontSize="14" FontWeight="Bold" Padding="0" VerticalAlignment="Stretch"/>
+
+                                    <TextBlock Margin="10" Text="Drives" FontSize="14" FontWeight="Bold" Padding="0" VerticalAlignment="Stretch"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Spacing="15" Orientation="Horizontal">
+                            <Image Margin="10" Width="30" Height="30" Source="Ms-Appx:///Assets/Ico/onedrive.png" />
+                            <TextBlock Text="OneDrive" VerticalAlignment="Center" FontSize="14"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                
+               
+            </SplitView.Pane>
+
+            <Frame Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Name="ItemDisplayFrame"/>
+
+        </SplitView>
+
     </Grid>
 </Page>
