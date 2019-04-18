@@ -11,23 +11,20 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Microsoft.Toolkit.Uwp;
 using Windows.UI.Xaml.Navigation;
-using MahExplorer.Views;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace MahExplorer
+namespace MahExplorer.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MasterPage : Page
     {
-        public MainPage()
+        public MasterPage()
         {
             this.InitializeComponent();
-            Frame1.Navigate(typeof(MasterPage));
         }
     }
 }

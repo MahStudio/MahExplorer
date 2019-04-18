@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="MahExplorer.Views.MasterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MahExplorer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:uilib="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Custom="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Canvas.ZIndex="3" Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Height="7"/>
+        <Grid Grid.Row="1" Canvas.ZIndex="2">
+            <Custom:DropShadowPanel OffsetY="-2" Margin="0,-1,0,0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" BlurRadius="10">
+                <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Orientation="Vertical">
+                    <Custom:TabView x:Name="Ribbon" TabWidthBehavior="Actual" Background="Transparent">
+                        
+                        <Custom:TabViewItem  IsSelected="True" BorderThickness="0" Header="Home">
+                            <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                <CommandBar.Content>
+                                    <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                        <AppBarButton Name="CutButton" IsEnabled="False" Label="Cut" Icon="Cut"/>
+                                        <AppBarButton Name="CopyButton" IsEnabled="False" Label="Copy" Icon="Copy"/>
+                                        <AppBarButton Name="PasteButton" IsEnabled="False" Label="Paste" Icon="Paste"/>
+                                        <AppBarButton Name="CopyPathButton" IsEnabled="False" Label="Copy Path">
+                                            <AppBarButton.Icon>
+                                                <FontIcon Glyph="&#xF271;" FontFamily="Segoe MDL2 Assets"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+                                        <AppBarSeparator/>
+                                        <AppBarButton Name="DeleteButton" IsEnabled="False" Label="Delete" Icon="Delete"/>
+                                        <AppBarButton Name="RenameButton" IsEnabled="False" Label="Rename" Icon="Rename"/>
+                                        <AppBarButton Name="AddItem" IsEnabled="False" Label="Add Item" Icon="Add"/>
+                                        <AppBarSeparator/>
+                                        <AppBarButton IsEnabled="False" Label="Properties">
+                                            <AppBarButton.Icon>
+                                                <FontIcon Glyph="&#xE946;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+                                        <AppBarButton Name="OpenWithButton" IsEnabled="False" Label="Open With" Icon="OpenWith"/>
+                                    </CommandBar>
+                                </CommandBar.Content>
+                            </CommandBar>
+                        </Custom:TabViewItem>
+                        <Custom:TabViewItem  BorderThickness="0"  Header="Share">
+                            <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                <CommandBar.Content>
+                                    <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                        <AppBarButton Name="ShareButton" IsEnabled="False" Label="Share" Icon="Share"/>
+                                    </CommandBar>
+                                </CommandBar.Content>
+                            </CommandBar>
+                        </Custom:TabViewItem>
+                        <Custom:TabViewItem  BorderThickness="0" Header="Layout">
+                            <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                <CommandBar.Content>
+                                    <CommandBar Background="Transparent" OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+                                        <AppBarButton Name="LayoutButton" IsEnabled="False" Label="Layout Mode">
+                                            <AppBarButton.Icon>
+                                                <FontIcon Glyph="&#xF246;" FontFamily="Segoe MDL2 Assets"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+                                        <AppBarButton Name="SelectAllButton" IsEnabled="False" Icon="SelectAll" Label="Select All">
+                                            <AppBarButton.KeyboardAccelerators>
+                                                <KeyboardAccelerator Modifiers="Control" Key="A"/>
+                                            </AppBarButton.KeyboardAccelerators>
+                                        </AppBarButton>
+                                        <AppBarButton  Name="ClearAllButton" IsEnabled="False" Icon="ClearSelection" Label="Clear All"/>
+
+                                    </CommandBar>
+                                </CommandBar.Content>
+                            </CommandBar>
+                        </Custom:TabViewItem>
+                        <Custom:TabView.Resources>
+                            <uilib:TeachingTip Target="{x:Bind Ribbon}" x:Key="RibbonTeachingTip" Name="RibbonTip" PreferredPlacement="Bottom" Subtitle="Access different commands faster than ever from their new location." Title="Meet the Ribbon">
+                                <uilib:TeachingTip.IconSource>
+                                    <uilib:SymbolIconSource Symbol="Help"/>
+                                </uilib:TeachingTip.IconSource>
+                            </uilib:TeachingTip>
+                        </Custom:TabView.Resources>
+                    </Custom:TabView>
+                    <Grid VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <AppBarButton Icon="Back" Margin="10,0,0,0" Width="40" Height="40" LabelPosition="Collapsed" x:Name="Back">
+
+                                <AppBarButton.KeyboardAccelerators>
+                                    <KeyboardAccelerator Modifiers="Control" Key="Left"/>
+                                </AppBarButton.KeyboardAccelerators>
+                            </AppBarButton>
+
+                            <AppBarButton Icon="Forward" Width="40" Height="40" LabelPosition="Collapsed" x:Name="Forward">
+
+                                <AppBarButton.KeyboardAccelerators>
+                                    <KeyboardAccelerator Modifiers="Control" Key="Right"/>
+                                </AppBarButton.KeyboardAccelerators>
+                            </AppBarButton>
+
+                            <AppBarButton LabelPosition="Collapsed" Width="40" Height="40" IsEnabled="False" Label="Refresh" x:Name="Refresh" >
+                                <AppBarButton.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="&#xE72C;" FontFamily="Segoe MDL2 Assets"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </AppBarButton.ContentTemplate>
+                                <AppBarButton.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="F5"/>
+                                </AppBarButton.KeyboardAccelerators>
+                            </AppBarButton>
+                        </StackPanel>
+                        <TextBox Grid.Column="1" BorderThickness="1" x:Name="VisiblePath" Text="Path" FontFamily="Segoe UI" FontWeight="SemiBold" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="2,5" PlaceholderText="Navigate to a path...">
+
+                        </TextBox>
+
+                        <AutoSuggestBox PlaceholderText="Search" QueryIcon="Find" Width="275" Margin="5" Grid.Column="2"/>
+
+                    </Grid>
+                </StackPanel>
+            </Custom:DropShadowPanel>
+
+        </Grid>
+    </Grid>
+</Page>
